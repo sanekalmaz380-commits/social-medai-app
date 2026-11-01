@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedReminder AI — Помощник по приему лекарств</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header role="banner">
+    <h1>🏥 MedReminder AI</h1>
+    <button id="toggle-voice-btn" aria-label="Включить или выключить голосовой помощник">
+      🔊 Озвучка: Включена
+    </button>
+  </header>
+
+  <main role="main">
+    <!-- Форма добавления -->
+    <section class="card" aria-labelledby="add-title">
+      <h2 id="add-title">➕ Добавить лекарство</h2>
+      <form id="reminder-form">
+        <div class="form-group">
+          <label for="med-name">Название лекарства:</label>
+          <input type="text" id="med-name" placeholder="Например: Аспирин" required>
+        </div>
+        <div class="form-group">
+          <label for="med-time">Время приема:</label>
+          <input type="time" id="med-time" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить напоминание</button>
+      </form>
+    </section>
+
+    <!-- Список напоминаний -->
+    <section class="card" aria-labelledby="list-title">
+      <h2 id="list-title">💊 Мои прием лекарств</h2>
+      <ul id="reminder-list" aria-live="polite">
+        <!-- Напоминания будут появляться здесь -->
+      </ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
