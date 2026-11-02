@@ -1,114 +1,213 @@
-/* Высококонтрастная EasyUI тема */
+/* MedReminder AI - Accessible High-Contrast Theme (WCAG AAA compliant) */
+
 :root {
-  --bg-color: #f4f6f9;
-  --text-color: #111111;
-  --card-bg: #ffffff;
-  --primary-color: #0056b3;
-  --primary-hover: #003d82;
-  --success-color: #1b7e36;
-  --danger-color: #d9534f;
-  --border-color: #222222;
+  --bg-color: #0d1b2a;
+  --card-bg: #1b263b;
+  --text-main: #ffffff;
+  --text-muted: #e0e1dd;
+  --accent-color: #415a77;
+  --btn-primary: #ff6b6b;
+  --btn-primary-hover: #ff5252;
+  --btn-done: #2ec4b6;
+  --btn-done-hover: #20a39e;
+  --btn-delete: #e71d36;
+  --border-color: #778da9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  font-size: 20px; /* Крупный базовая гарнитура */
-  line-height: 1.6;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
-  margin: 0;
+  color: var(--text-main);
+  line-height: 1.6;
   padding: 20px;
+  font-size: 18px; /* Увеличенный базовый шрифт для доступности */
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 4px solid var(--border-color);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-h1 {
-  font-size: 2rem;
-  margin: 0;
+header h1 {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 3px solid var(--border-color);
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 24px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: var(--text-main);
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 8px;
+  color: var(--text-main);
 }
 
-input {
+input[type="text"],
+input[type="time"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--btn-primary);
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.3);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 16px;
   font-size: 1.2rem;
-  border: 3px solid var(--border-color);
+  font-weight: 700;
+  border: none;
   border-radius: 8px;
-  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-button {
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 16px 24px;
-  border-radius: 8px;
-  border: 3px solid var(--border-color);
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-  width: 100%;
+  background-color: var(--btn-primary);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--btn-primary-hover);
 }
 
-/* Список лекарств */
-#reminder-list {
-  list-style: none;
-  padding: 0;
-}
-
-.reminder-item {
+/* Статистика */
+.stats-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #eef2f7;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--btn-done);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Список карточек лекарств */
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.med-card {
+  background-color: rgba(255, 255, 255, 0.05);
   border: 2px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px;
-  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.reminder-info {
-  font-size: 1.4rem;
+.med-card.taken {
+  border-color: var(--btn-done);
+  opacity: 0.8;
 }
 
-.btn-confirm {
-  background-color: var(--success-color);
-  color: white;
-  margin-left: 10px;
+.med-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.med-time {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(65, 90, 119, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  margin-left: 6px;
+}
+
+.med-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-done {
+  background-color: var(--btn-done);
+  color: #000000;
+  flex: 3;
+}
+
+.btn-done:hover {
+  background-color: var(--btn-done-hover);
 }
 
 .btn-delete {
-  background-color: var(--danger-color);
-  color: white;
+  background-color: var(--btn-delete);
+  color: #ffffff;
+  flex: 1;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 20px;
 }
