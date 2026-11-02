@@ -3,40 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MedReminder AI — Помощник по приему лекарств</title>
-  <link rel="stylesheet" href="style.css">
+  <title>MedReminder AI — Доступные напоминания</title>
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
   <header role="banner">
-    <h1>🏥 MedReminder AI</h1>
-    <button id="toggle-voice-btn" aria-label="Включить или выключить голосовой помощник">
-      🔊 Озвучка: Включена
-    </button>
+    <h1>MedReminder AI</h1>
+    <p class="subtitle">Простые и доступные напоминания о приеме лекарств</p>
   </header>
 
-  <main role="main">
-    <!-- Форма добавления -->
+  <main id="main-content" role="main">
+    <!-- Блок ввода -->
     <section class="card" aria-labelledby="add-title">
-      <h2 id="add-title">➕ Добавить лекарство</h2>
-      <form id="reminder-form">
+      <h2 id="add-title">Добавить новое лекарство</h2>
+      <form id="med-form">
         <div class="form-group">
-          <label for="med-name">Название лекарства:</label>
-          <input type="text" id="med-name" placeholder="Например: Аспирин" required>
+          <label for="med-name">Название лекарства / витамина:</label>
+          <input type="text" id="med-name" placeholder="Например: Аспирин" required aria-required="true">
         </div>
+
         <div class="form-group">
           <label for="med-time">Время приема:</label>
-          <input type="time" id="med-time" required>
+          <input type="time" id="med-time" required aria-required="true">
         </div>
-        <button type="submit" class="btn btn-primary">Сохранить напоминание</button>
+
+        <div class="form-group">
+          <label for="med-dosage">Дозировка / Примечание:</label>
+          <input type="text" id="med-dosage" placeholder="Например: 1 таблетка после еды">
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">
+          <span class="btn-icon">➕</span> Добавить напоминание
+        </button>
       </form>
     </section>
 
-    <!-- Список напоминаний -->
+    <!-- Блок статистики -->
+    <section class="card stats-card" aria-labelledby="stats-title">
+      <h2 id="stats-title">📊 Статистика приема</h2>
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-number" id="total-count">0</span>
+          <span class="stat-label">Всего запланировано</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="completed-count">0</span>
+          <span class="stat-label">Принято сегодня</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Список лекарств -->
     <section class="card" aria-labelledby="list-title">
-      <h2 id="list-title">💊 Мои прием лекарств</h2>
-      <ul id="reminder-list" aria-live="polite">
-        <!-- Напоминания будут появляться здесь -->
-      </ul>
+      <h2 id="list-title">Мои лекарства</h2>
+      <div id="med-list" class="med-list" role="region" aria-live="polite">
+        <!-- Напоминания будут добавляться динамически через JS -->
+      </div>
     </section>
   </main>
 
